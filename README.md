@@ -11,4 +11,4 @@
 
 ## How to Use
 
-**Access https://lexouilletm.github.io/splatoon-countdown/ via an OBS browser source and start your countdown!**
+**Access [Splatoon Countdown Maker](https://lexouilletm.github.io/splatoon-countdown-maker/) via an OBS browser source and start your countdown!**
