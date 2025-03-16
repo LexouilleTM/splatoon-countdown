@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Décompte Splatoon 2</title>
+    <style>
+        @font-face {
+            font-family: 'Splatoon2';
+            src: local('Splatoon2');
+        }
+        body {
+            font-family: 'Splatoon2', sans-serif;
+            background-color: transparent;
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #countdown {
+            font-size: 10vw;
+            font-weight: bold;
+            white-space: nowrap;
+            display: none;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+            color: #ffffff;
+            position: absolute;
+            top: 75%;
+            transform: translateY(-50%);
+        }
+        #input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 1;
+        }
+        input, button {
+            font-size: 1.5rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #000;
+            color: #fff;
+        }
+        .confetti {
+            position: absolute;
+            top: -50px;
+            width: 50px;
+            opacity: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="input-container">
+        <input type="datetime-local" id="datetime" required>
+        <button onclick="startCountdown()">Lancer le décompte</button>
+    </div>
+    <div id="countdown">00:00:00</div>
+
+    <script>
+        let targetDate;
+
+        function startCountdown() {
+            const input = document.getElementById('datetime').value;
+            if (!input) return;
+
+            targetDate = new Date(input);
+            document.getElementById('input-container').style.display = 'none';
+            document.getElementById('countdown').style.display = 'block';
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            const countdownElement = document.getElementById('countdown');
+
+            if (diff <= 0) {
+                clearInterval(updateCountdown);
+                countdownElement.textContent = "00:00:00";
+                startConfetti();
+                return;
+            }
+
+            const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+            countdownElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function startConfetti() {
+            const confettiCount = 25;
+            const body = document.body;
+            const imagePaths = [
+                './img/image1.png',
+                './img/image2.png',
+                './img/image3.png',
+                './img/image4.png',
+                './img/image5.png',
+                './img/image6.png',
+                './img/image7.png',
+                './img/image8.png'
+            ];
+
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('img');
+                    confetti.classList.add('confetti');
+                    confetti.src = imagePaths[i % imagePaths.length];
+                    confetti.style.left = Math.random() * body.clientWidth + 'px';
+                    confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    body.appendChild(confetti);
+
+                    confetti.addEventListener('animationend', () => {
+                        confetti.remove();
+                    });
+                }, Math.random() * 4000);
+            }
+        }
+    </script>
+</body>
+</html>
