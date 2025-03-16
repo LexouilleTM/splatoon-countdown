@@ -1,14 +1,14 @@
 # Splatoon Countdown Maker
 
-**Splatoon Countdown Maker** est une application web qui permet de créer un compte à rebours jusqu'à une date et heure spécifiques. L'application permet également de personnaliser la couleur du texte du compte à rebours et d'afficher des confettis animés lorsque le compte à rebours arrive à zéro.
+**Splatoon Countdown Maker** is a web application that allows you to create a countdown to a specific date and time. The app also lets you customize the text color of the countdown and display animated confetti when the countdown reaches zero.
 
-## Fonctionnalités
+## Features
 
-- **Personnalisation de la couleur** : Vous pouvez choisir la couleur du texte du compte à rebours à l'aide d'un sélecteur de couleur.
-- **Compte à rebours dynamique** : Le compte à rebours se met à jour en temps réel et affiche le temps restant sous forme de HH:MM:SS.
-- **Confettis animés** : Lorsqu'un compte à rebours arrive à zéro, des confettis avec des images personnalisés tombent à l'écran.
-- **Support des durées longues** : Le compte à rebours fonctionne correctement pour des événements à plus de 24 heures.
+- **Text color customization** 🎨: You can choose the text color of the countdown using a color picker.
+- **Dynamic countdown** ⏳: The countdown updates in real-time and shows the remaining time in HH:MM:SS format.
+- **Animated confetti** 🎉: When the countdown reaches zero, confetti with customizable images falls on the screen.
+- **Support for long durations** ⏰: The countdown works perfectly for events lasting more than 24 hours.
 
-## Utilisation
+## How to Use
 
-**Accèdez a https://lexouilletm.github.io/splatoon-countdown/ via une source navigateur OBS et lancez votre countdown !**
+**Access https://lexouilletm.github.io/splatoon-countdown/ via an OBS browser source and start your countdown!**
