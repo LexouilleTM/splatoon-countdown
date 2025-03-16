@@ -44,7 +44,8 @@ function startConfetti() {
         './img/image5.png',
         './img/image6.png',
         './img/image7.png',
-        './img/image8.png'
+        './img/image8.png',
+        '.img/image9.png'
     ];
 
     for (let i = 0; i < confettiCount; i++) {
