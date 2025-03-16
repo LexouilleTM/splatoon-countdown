@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Décompte Splatoon 2</title>
+    <title>Splatoon Countdown Maker</title>
     <style>
         @font-face {
             font-family: 'Splatoon2';
@@ -72,8 +72,9 @@
 </head>
 <body>
     <div id="input-container">
+        <input type="color" id="color-picker" value="#ffffff">
         <input type="datetime-local" id="datetime" required>
-        <button onclick="startCountdown()">Lancer le décompte</button>
+        <button onclick="startCountdown()">Start Countdown</button>
     </div>
     <div id="countdown">00:00:00</div>
 
@@ -95,6 +96,8 @@
             const now = new Date();
             const diff = targetDate - now;
             const countdownElement = document.getElementById('countdown');
+            const colorPicker = document.getElementById('color-picker');
+            countdownElement.style.color = colorPicker.value;
 
             if (diff <= 0) {
                 clearInterval(updateCountdown);
