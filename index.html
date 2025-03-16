@@ -81,39 +81,40 @@
 
     <script>
         let targetDate;
-
+    
         function startCountdown() {
             const input = document.getElementById('datetime').value;
             if (!input) return;
-
+    
             targetDate = new Date(input);
             document.getElementById('input-container').style.display = 'none';
             document.getElementById('countdown').style.display = 'block';
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
-
+    
         function updateCountdown() {
             const now = new Date();
             const diff = targetDate - now;
             const countdownElement = document.getElementById('countdown');
             const colorPicker = document.getElementById('color-picker');
             countdownElement.style.color = colorPicker.value;
-
+    
             if (diff <= 0) {
                 clearInterval(updateCountdown);
                 countdownElement.textContent = "00:00:00";
                 startConfetti();
                 return;
             }
-
-            const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-
-            countdownElement.textContent = `${hours}:${minutes}:${seconds}`;
+    
+            const totalSeconds = Math.floor(diff / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+    
+            countdownElement.textContent = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
-
+    
         function startConfetti() {
             const confettiCount = 25;
             const body = document.body;
@@ -127,7 +128,7 @@
                 './img/image7.png',
                 './img/image8.png'
             ];
-
+    
             for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('img');
@@ -136,13 +137,13 @@
                     confetti.style.left = Math.random() * body.clientWidth + 'px';
                     confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
                     body.appendChild(confetti);
-
+    
                     confetti.addEventListener('animationend', () => {
                         confetti.remove();
                     });
                 }, Math.random() * 4000);
             }
         }
-    </script>
+    </script>    
 </body>
 </html>
