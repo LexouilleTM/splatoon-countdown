@@ -1,4 +1,7 @@
 let targetDate;
+let soundIndex = 1;
+let selectedSound = `./sounds/1.mp3`;
+let hasPlayedSound = false;
 
 function startCountdown() {
     const input = document.getElementById('datetime').value;
@@ -7,6 +10,8 @@ function startCountdown() {
     targetDate = new Date(input);
     document.getElementById('input-container').style.display = 'none';
     document.getElementById('countdown').style.display = 'block';
+    hasPlayedSound = false;
+
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
@@ -22,6 +27,11 @@ function updateCountdown() {
         clearInterval(updateCountdown);
         countdownElement.textContent = "00:00:00";
         startConfetti();
+
+        if (!hasPlayedSound) {
+            playSound();
+            hasPlayedSound = true;
+        }
         return;
     }
 
@@ -31,6 +41,17 @@ function updateCountdown() {
     const seconds = totalSeconds % 60;
 
     countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function changeSound() {
+    soundIndex = (soundIndex % 4) + 1;
+    selectedSound = `./sounds/${soundIndex}.mp3`;
+    document.getElementById('sound-button').textContent = `Sound : ${soundIndex}`;
+}
+
+function playSound() {
+    const audio = new Audio(selectedSound);
+    audio.play();
 }
 
 function startConfetti() {
