@@ -1,14 +1,15 @@
-# Splatoon Countdown Maker
+# Splatoon Countdown Maker  
 
-**Splatoon Countdown Maker** is a web application that allows you to create a countdown to a specific date and time. The app also lets you customize the text color of the countdown and display animated confetti when the countdown reaches zero.
+**Splatoon Countdown Maker** is a web application that lets you create a countdown to a specific date and time. When the countdown reaches zero, confetti appears on the screen, and one of four different sounds plays.  
 
-## Features
+## Features  
 
-- **Text color customization** 🎨: You can choose the text color of the countdown using a color picker.
-- **Dynamic countdown** ⏳: The countdown updates in real-time and shows the remaining time in HH:MM:SS format.
-- **Animated confetti** 🎉: When the countdown reaches zero, confetti with customizable images falls on the screen.
-- **Support for long durations** ⏰: The countdown works perfectly for events lasting more than 24 hours.
+- **Text color customization** 🎨: Choose the countdown text color using a color picker.  
+- **Dynamic countdown** ⏳: Updates in real-time and displays the remaining time in HH:MM:SS format.  
+- **Animated confetti** 🎉: When the countdown reaches zero, confetti falls on the screen.  
+- **End sound** 🔊: One of four different sounds plays automatically when the countdown finishes.  
+- **Support for long durations** ⏰: Works perfectly for events lasting more than 24 hours.  
 
-## How to Use
+## How to Use  
 
-**Access [Splatoon Countdown Maker](https://lexouilletm.github.io/splatoon-countdown-maker/) via a browser source and start your countdown!**
+**Access [Splatoon Countdown Maker](https://lexouilletm.github.io/splatoon-countdown-maker/) from a browser or a browser source and start your countdown!**
